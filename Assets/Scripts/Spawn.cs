@@ -8,6 +8,7 @@ public class Spawn : MonoBehaviour
     private GameObject Character;
     [SerializeField]
     private float TimeSpawn = 5;
+    private float RandomTime = 0.7f;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class Spawn : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(TimeSpawn);
+            yield return new WaitForSeconds(TimeSpawn + Random.Range(-RandomTime, RandomTime));
             CreateChar();
         }
     }

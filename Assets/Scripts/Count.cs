@@ -15,6 +15,6 @@ public class Count : MonoBehaviour
     public static void ChangeCount()
     {
         Counter++;
-        CounterText.text = Counter.ToString() + " прышков";
+        CounterText.text = Counter.ToString();
     }
 }

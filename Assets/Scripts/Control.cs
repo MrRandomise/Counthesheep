@@ -9,6 +9,9 @@ public class Control : MonoBehaviour
     private float speed = 1f;
     [SerializeField]
     private float jumpForce = 5;
+    [SerializeField]
+    private float DistanceJump = 2f;
+    private float RandomForceJump = 0.3f;
     private bool isJump = false;
     private bool inAir = false;
 
@@ -20,7 +23,7 @@ public class Control : MonoBehaviour
     void Update()
     {
         Move();
-        if (transform.position.x <= 2 && !isJump)
+        if (transform.position.x <= DistanceJump && !isJump)
             Jump();
     }
 
@@ -28,8 +31,8 @@ public class Control : MonoBehaviour
     {
         if (!inAir)
         {
-            rb.AddForce(new Vector2(0, jumpForce),ForceMode2D.Impulse);
-            Count.ChangeCount();
+            rb.AddForce(new Vector2(0, jumpForce+Random.Range(-RandomForceJump, RandomForceJump)),ForceMode2D.Impulse);
+            //Count.ChangeCount();
             isJump = true;
             inAir = true;
         }
